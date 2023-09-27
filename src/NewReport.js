@@ -5,6 +5,8 @@ function NewReport() {
     const [formData, setFormData] = useState({
         companyName: '',
         industry: '',
+        logo: File,
+        dataFile: File,
     });
 
     const handleSubmit = async (e) => {
@@ -20,6 +22,9 @@ function NewReport() {
                 body: JSON.stringify({
                     "company_name": formData.companyName,
                     "industry": formData.industry,
+                    //"logo": formData.logo,
+                    //"dataFile": formData.dataFile
+                    //TODO Test if passing files encoded as json works
                 }),
             });
 
@@ -61,6 +66,17 @@ function NewReport() {
                             />
                         </Form.Group>
 
+                        <Form.Group controlId="formCompanyLogo">
+                            <Form.Label>Company Logo</Form.Label>
+                            <Form.Control
+                                type="file"
+                                name="logo"
+                                placeholder="Upload company logo"
+                                value={formData.logo}
+                                onChange={handleChange}
+                            />
+                        </Form.Group>
+
                         <Form.Group controlId="formIndustry">
                             <Form.Label>Industry</Form.Label>
                             <Form.Control
@@ -74,6 +90,18 @@ function NewReport() {
                                 <option>Real State</option>
                                 <option>Pharmaceutic</option>
                             </Form.Control>
+                        </Form.Group>
+
+
+                        <Form.Group controlId="formDataFile">
+                            <Form.Label>Data File</Form.Label>
+                            <Form.Control
+                                type="file"
+                                name="dataFile"
+                                placeholder="Upload data file"
+                                value={formData.dataFile}
+                                onChange={handleChange}
+                            />
                         </Form.Group>
 
                         <Button className="mt-3" variant="primary" type="submit">

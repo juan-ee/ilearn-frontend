@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Container from "react-bootstrap/Container";
+import './ListReports.css';
 
 function ListReports() {
     const [reports, setReports] = useState([]);
@@ -31,14 +32,45 @@ function ListReports() {
     return (
         <Container className="mt-5">
             <h2>List Reports</h2>
+
+            <form>
+                <label>
+                    Search:
+                    <input type="text" name="searchText"></input>
+                </label>
+                <input type="submit" value="Submit"></input>
+            </form>
+
+            <table class="ReportsTable">
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Logo</th>
+                        <th>Industry</th>
+                        <th>PDF</th>
+                    </tr>
+                </thead>
+
             {loading ? (
                 <p>Loading...</p>
             ) : (
-                <ul>
-                    {reports.map((report, index) => (
-                        <li key={index}>{report.company_name} -- {report.industry}</li>
-                    ))}
-                </ul>)}
+                <tbody>
+
+                        {reports.map((report, index) => (
+                            <tr>
+                                <td key={index}>{report.company_name}</td>
+                                <td> TODO logo</td>
+                                <td key={index}>{report.industry}</td>
+                                <td> TODO PDF link</td>
+                            </tr>
+                        ))}
+                </tbody>
+                )
+            }
+
+            </table>
+
+            
         </Container>
     );
 }
