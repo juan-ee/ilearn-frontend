@@ -2,32 +2,26 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
 function NewReport() {
-    const [formData, setFormData] = useState({
-        companyName: '',
-        industry: '',
-        logo: File,
-        dataFile: File,
-    });
+    const [companyName, setCompanyName] = useState('');
+    const [industry, setIndustry] = useState('');
+    const [pdf, setPdf] = useState(null);
+    const [image, setImage] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         // Handle form submission, e.g., send data to the server
 
+        const formData = new FormData();
+        formData.append('company_name', companyName);
+        formData.append('industry', industry);
+        formData.append('pdf', pdf);
+        formData.append('image', image);
+
         try {
             const response = await fetch('http://127.0.0.1:8000/reports', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    "company_name": formData.companyName,
-                    "industry": formData.industry,
-                    //"logo": formData.logo,
-                    //"dataFile": formData.dataFile
-                    //TODO Test if passing files encoded as json works
-                }),
+                body: formData, // Automatically sets content-type to 'multipart/form-data'
             });
-
             if (response.ok) {
                 // Request was successful, you can handle the response here
                 alert('report saved !');
@@ -36,17 +30,9 @@ function NewReport() {
                 alert('POST request failed');
             }
         } catch (error) {
-            alert(`Error:${error}`);
+            console.error('Error uploading data:', error);
         }
 
-    };
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
     };
 
 
@@ -61,8 +47,8 @@ function NewReport() {
                                 type="text"
                                 name="companyName"
                                 placeholder="Enter company name"
-                                value={formData.companyName}
-                                onChange={handleChange}
+                                value={companyName}
+                                onChange={(e) => setCompanyName(e.target.value)}
                             />
                         </Form.Group>
 
@@ -71,10 +57,9 @@ function NewReport() {
                             <Form.Control
                                 type="file"
                                 name="logo"
-                                access="image/*"
                                 placeholder="Upload company logo"
-                                value={formData.logo}
-                                onChange={handleChange}
+                                accept="image/*"
+                                onChange={(e) => setImage(e.target.files[0])}
                             />
                         </Form.Group>
 
@@ -83,8 +68,8 @@ function NewReport() {
                             <Form.Control
                                 as="select"
                                 name="industry"
-                                value={formData.industry}
-                                onChange={handleChange}
+                                value={industry}
+                                onChange={(e) => setIndustry(e.target.value)}
                             >
                                 <option>Select an industry</option>
                                 <option>Automobil</option>
@@ -100,8 +85,8 @@ function NewReport() {
                                 type="file"
                                 name="dataFile"
                                 placeholder="Upload data file"
-                                value={formData.dataFile}
-                                onChange={handleChange}
+                                accept=".pdf"
+                                onChange={(e) => setPdf(e.target.files[0])}
                             />
                         </Form.Group>
 
