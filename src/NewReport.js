@@ -71,6 +71,7 @@ function NewReport() {
                             <Form.Control
                                 type="file"
                                 name="logo"
+                                access="image/*"
                                 placeholder="Upload company logo"
                                 value={formData.logo}
                                 onChange={handleChange}
