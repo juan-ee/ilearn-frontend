@@ -85,12 +85,6 @@ function ListReports() {
                 <td> TODO PDF link</td>
               </tr>
             ))}
-            <tr>
-            <td>Company</td>
-            <td>Logo</td>
-            <td>Industry</td>
-            <td>PDF</td>
-          </tr>
           </tbody>
         )}
       </table>
