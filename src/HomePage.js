@@ -37,6 +37,7 @@ function NewReport(props) {
   };
 
   return (
+    // Modal for the new report
     <Modal
       {...props}
       size="lg"
@@ -44,11 +45,12 @@ function NewReport(props) {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          New Report
-        </Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">New Report</Modal.Title>
       </Modal.Header>
       <Modal.Body>
+        {/* 
+         Form for the company name
+     */}
         <Form onSubmit={handleSubmit} className="mt-3">
           <Form.Group controlId="formCompanyName">
             <Form.Label>Company Name</Form.Label>
@@ -60,8 +62,10 @@ function NewReport(props) {
               onChange={(e) => setCompanyName(e.target.value)}
             />
           </Form.Group>
-
-          <Form.Group controlId="formCompanyLogo"className="mt-3">
+          {/* 
+         Form for the company logo
+     */}
+          <Form.Group controlId="formCompanyLogo" className="mt-3">
             <Form.Label>Company Logo</Form.Label>
             <Form.Control
               type="file"
@@ -71,7 +75,9 @@ function NewReport(props) {
               onChange={(e) => setImage(e.target.files[0])}
             />
           </Form.Group>
-
+          {/* 
+         Form for the company industry
+     */}
           <Form.Group controlId="formIndustry" className="mt-3">
             <Form.Label>Industry</Form.Label>
             <Form.Control
@@ -86,7 +92,9 @@ function NewReport(props) {
               <option>Pharmaceutic</option>
             </Form.Control>
           </Form.Group>
-
+          {/* 
+         Form for the company report
+     */}
           <Form.Group controlId="formDataFile" className="mt-3">
             <Form.Label>Data File</Form.Label>
             <Form.Control
@@ -97,13 +105,14 @@ function NewReport(props) {
               onChange={(e) => setPdf(e.target.files[0])}
             />
           </Form.Group>
-
+          {/* 
+         button to submit the previous form
+     */}
           <Button className="mt-3" variant="primary" type="submit">
             Submit
           </Button>
         </Form>
       </Modal.Body>
-
     </Modal>
   );
 }
@@ -124,7 +133,14 @@ function HomePage() {
               towards development.
             </p>
             <div>
-              <Button variant="primary" size="lg" onClick={() => setModalShow(true)}>
+              {/* 
+         Button for showing the Modal 
+     */}
+              <Button
+                variant="primary"
+                size="lg"
+                onClick={() => setModalShow(true)}
+              >
                 New Report
               </Button>
 
@@ -134,6 +150,7 @@ function HomePage() {
               </Button>
             </div>
           </div>
+
           <div class="container margin">
             <div class="d-flex flex-row mb-3">
               <div class="me-5">Latest Reports</div>
