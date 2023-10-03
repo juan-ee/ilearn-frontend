@@ -80,9 +80,14 @@ function ListReports() {
             {reports.map((report, index) => (
               <tr>
                 <td class="fw-bold fw-normal mb-1" key={index}>{report.company_name}</td>
-                <td> TODO logo</td>
+                <td key={index}><img src={report.icon_path}></img></td>
                 <td key={index}>{report.industry}</td>
-                <td> TODO PDF link</td>
+                <td key={index}>{report.rating_ecovadis}</td>
+                <td key={index}>{report.rating_cdp}</td>
+                <td key={index}>{report.rating_sustainalitycs}</td>
+                <td key={index}>{report.rating_msci}</td>
+                <td key={index}>{report.rating_sp_dow_jones}</td>
+                <td key={index}> <a href={report.pdf}>report {report.company_name}</a></td>
               </tr>
             ))}
           </tbody>

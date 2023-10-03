@@ -9,5 +9,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Clone or download the project
 - Open the project folder with Visual Studio Code. Click on File -> Open Folder...
 - Run `npm install`
-- Run `npm serve`
+- Run `npm start`
 
