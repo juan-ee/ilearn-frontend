@@ -1,6 +1,7 @@
 import { Button, Form } from "react-bootstrap";
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
+import { useNavigate } from 'react-router-dom';
 import "./css/HomePage.css";
 
 function NewReport(props) {
@@ -8,6 +9,7 @@ function NewReport(props) {
   const [industry, setIndustry] = useState("");
   const [pdf, setPdf] = useState(null);
   const [image, setImage] = useState(null);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,6 +36,7 @@ function NewReport(props) {
     } catch (error) {
       console.error("Error uploading data:", error);
     }
+    navigate('/list-reports');
   };
 
   return (
