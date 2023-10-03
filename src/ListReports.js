@@ -69,7 +69,12 @@ function ListReports() {
             <th>Company</th>
             <th>Logo</th>
             <th>Industry</th>
-            <th>PDF</th>
+            <th>Ecovadis</th>
+            <th>CDP</th>
+            <th>Sustainalytics</th>
+            <th>MSCI</th>
+            <th>S&P Dow Jones</th>
+            <th>Report</th>
           </tr>
         </thead>
 
