@@ -79,23 +79,6 @@ function NewReport(props) {
             />
           </Form.Group>
           {/* 
-         Form for the company industry
-     */}
-          <Form.Group controlId="formIndustry" className="mt-3">
-            <Form.Label>Industry</Form.Label>
-            <Form.Control
-              as="select"
-              name="industry"
-              value={industry}
-              onChange={(e) => setIndustry(e.target.value)}
-            >
-              <option>Select an industry</option>
-              <option>Automobil</option>
-              <option>Real State</option>
-              <option>Pharmaceutic</option>
-            </Form.Control>
-          </Form.Group>
-          {/* 
          Form for the company report
      */}
           <Form.Group controlId="formDataFile" className="mt-3">
