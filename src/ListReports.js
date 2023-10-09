@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import "./css/ListReports.css";
+import SortingComponent from "./SortingComponent"
 
 function ListReports() {
   const [reports, setReports] = useState([]);
@@ -27,6 +28,9 @@ function ListReports() {
         console.error("Fetch error:", error);
         setLoading(false); // Set loading to false in case of an error
       });
+      
+      SortingComponent();
+      
   }, []); // The empty dependency array ensures the effect runs only once
 
   return (
@@ -87,14 +91,14 @@ function ListReports() {
       <table className="ReportsTable table align-middle mb-0 bg-white ">
         <thead>
           <tr>
-            <th>Company</th>
+            <th class="sortable">Company</th>
             <th>Logo</th>
-            <th>Industry</th>
-            <th>Ecovadis</th>
-            <th>CDP</th>
-            <th>Sustainalytics</th>
-            <th>MSCI</th>
-            <th>S&P Dow Jones</th>
+            <th class="sortable">Industry</th>
+            <th class="sortable">Ecovadis</th>
+            <th class="sortable">CDP</th>
+            <th class="sortable">Sustainalytics</th>
+            <th class="sortable">MSCI</th>
+            <th class="sortable">S&P Dow Jones</th>
             <th>Report</th>
             <th>Original</th>
           </tr>
