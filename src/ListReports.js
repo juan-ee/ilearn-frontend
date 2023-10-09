@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 import "./css/ListReports.css";
-import SortingComponent from "./SortingComponent"
+import SortingComponent from "./SortingComponent";
 
 function ListReports() {
   const [reports, setReports] = useState([]);
@@ -28,9 +30,8 @@ function ListReports() {
         console.error("Fetch error:", error);
         setLoading(false); // Set loading to false in case of an error
       });
-      
-      SortingComponent();
-      
+
+    SortingComponent();
   }, []); // The empty dependency array ensures the effect runs only once
 
   return (
@@ -66,7 +67,7 @@ function ListReports() {
         </div>
       </form>
       <div className="container-filter industry-filter">
-        <div class="all industry__item active-industry btn btn-primary">
+        <div class="all industry__item active-industry btn btn-success">
           <span
             class="industry__item  mixitup-control-active"
             data-filter="all"
@@ -94,11 +95,22 @@ function ListReports() {
             <th class="sortable">Company</th>
             <th>Logo</th>
             <th class="sortable">Industry</th>
-            <th class="sortable">Ecovadis</th>
-            <th class="sortable">CDP</th>
-            <th class="sortable">Sustainalytics</th>
-            <th class="sortable">MSCI</th>
-            <th class="sortable">S&P Dow Jones</th>
+            <OverlayTrigger overlay={<Tooltip>Explain the ratings</Tooltip>}>
+              <th class="sortable">Ecovadis</th>
+            </OverlayTrigger>
+            <OverlayTrigger overlay={<Tooltip>Explain the ratings</Tooltip>}>
+              <th class="sortable">CDP</th>
+            </OverlayTrigger>
+            <OverlayTrigger overlay={<Tooltip>Explain the ratings</Tooltip>}>
+              <th class="sortable">Sustainalytics</th>
+            </OverlayTrigger>
+            <OverlayTrigger overlay={<Tooltip>Explain the ratings</Tooltip>}>
+              <th class="sortable">MSCI</th>
+            </OverlayTrigger>
+            <OverlayTrigger overlay={<Tooltip>Explain the ratings</Tooltip>}>
+              <th class="sortable">S&P Dow Jones</th>
+            </OverlayTrigger>
+
             <th>Report</th>
             <th>Original</th>
           </tr>
@@ -129,7 +141,10 @@ function ListReports() {
                       {report.company_name}
                     </td>
                     <td key={index}>
-                      <img className="logo" src={"http://localhost:8000/" + report.logo_path}></img>
+                      <img
+                        className="logo"
+                        src={"http://localhost:8000/" + report.logo_path}
+                      ></img>
                     </td>
                     <td key={index}>{report.industry}</td>
                     <td key={index}>{report.rating_ecovadis}</td>
@@ -139,11 +154,20 @@ function ListReports() {
                     <td key={index}>{report.rating_sp_dow_jones}</td>
                     <td key={index}>
                       {" "}
-                      <a className="btn btn-primary"href={"http://localhost:8000/" + report.pptx_path}>report {report.company_name}</a>
+                      <a
+                        className="btn btn-success"
+                        href={"http://localhost:8000/" + report.pptx_path}
+                      >
+                        report {report.company_name}
+                      </a>
                     </td>
                     <td key={index}>
-
-                      <a className="btn btn-outline-primary" href={"http://localhost:8000/" + report.pdf_path}>Original Reports</a>
+                      <a
+                        className="btn btn-outline-success"
+                        href={"http://localhost:8000/" + report.pdf_path}
+                      >
+                        Original Reports
+                      </a>
                     </td>
                   </tr>
                 ))}

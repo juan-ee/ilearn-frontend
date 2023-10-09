@@ -6,7 +6,6 @@ import "./css/HomePage.css";
 
 function NewReport(props) {
   const [companyName, setCompanyName] = useState("");
-  const [industry, setIndustry] = useState("");
   const [pdf, setPdf] = useState(null);
   const [image, setImage] = useState(null);
   const navigate = useNavigate();
@@ -17,7 +16,6 @@ function NewReport(props) {
 
     const formData = new FormData();
     formData.append("company_name", companyName);
-    formData.append("industry", industry);
     formData.append("pdf", pdf);
     formData.append("image", image);
 
@@ -94,7 +92,7 @@ function NewReport(props) {
           {/* 
          button to submit the previous form
      */}
-          <Button className="mt-3" variant="primary" type="submit">
+          <Button className="mt-5" variant="success" type="submit">
             Submit
           </Button>
         </Form>
@@ -106,7 +104,7 @@ function NewReport(props) {
 function HomePage() {
   const [modalShow, setModalShow] = React.useState(false);
   return (
-    <div class="margin">
+    <div class="pdt">
       <div class="container mb-5">
         <div class="row position-relative">
           <div class="col-12 col-lg-8 mx-auto text-center mb-5">
@@ -123,7 +121,7 @@ function HomePage() {
          Button for showing the Modal 
      */}
               <Button
-                variant="primary"
+                variant="success"
                 size="lg"
                 onClick={() => setModalShow(true)}
               >
@@ -131,13 +129,13 @@ function HomePage() {
               </Button>
 
               <NewReport show={modalShow} onHide={() => setModalShow(false)} />
-              <Button variant="primary ms-5" size="lg" href="/list-reports">
+              <Button variant="success ms-5" size="lg" href="/list-reports">
                 Search Reports
               </Button>
             </div>
           </div>
 
-          <div class="container margin">
+          <div class="container pt">
             <div class="d-flex flex-row mb-3">
               <div class="me-5">Latest Reports</div>
               <div>Favourite Reports</div>

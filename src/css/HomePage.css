@@ -1,6 +1,12 @@
-.margin{
-    margin-top: 8rem !important;
+.pdt{
+    padding-top: 8rem !important;
+    background-image: url(../img/background.jpg);
+    background-size: contain;
+    height: 100vh;
 }
 .howto{
     width: 48px;height: 48px;
+}
+.pt{
+    padding-top: 8rem !important;
 }
