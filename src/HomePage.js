@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { useNavigate } from 'react-router-dom';
 import "./css/HomePage.css";
+import gif from "./AGNB.gif";
 
 function NewReport(props) {
   const [companyName, setCompanyName] = useState("");
@@ -28,7 +29,13 @@ function NewReport(props) {
       });
       if (response.ok) {
         // Request was successful, you can handle the response here
-        alert("report saved !");
+        document.getElementById("loadingModal").style.display = "block";
+
+        setTimeout(function() {
+          navigate('/list-reports');
+        }, 2000);
+
+        //alert("report saved !");
       } else {
         // Request failed, handle the error here
         alert("POST request failed");
@@ -36,7 +43,6 @@ function NewReport(props) {
     } catch (error) {
       console.error("Error uploading data:", error);
     }
-    navigate('/list-reports');
   };
 
   return (
@@ -135,6 +141,10 @@ function HomePage() {
                 Search Reports
               </Button>
             </div>
+          </div>
+
+          <div id="loadingModal" class="LoadingModal">
+            <img class="LoadingModal-content" src={gif} alt="missing image"></img>
           </div>
 
           <div class="container margin">
