@@ -5,7 +5,7 @@ function SortingComponent() {
   (function() {
 
     var asc = true;
-    var lastClickedId = 0;
+    var lastClickedId = 99;
 
     function setDirectionToOrder(clickedThId) {
         if (lastClickedId == clickedThId) {
