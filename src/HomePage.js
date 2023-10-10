@@ -1,5 +1,5 @@
 import { Button, Form } from "react-bootstrap";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import { useNavigate } from 'react-router-dom';
 import "./css/HomePage.css";
@@ -109,6 +109,33 @@ function NewReport(props) {
 
 function HomePage() {
   const [modalShow, setModalShow] = React.useState(false);
+
+  const [reports, setReports] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Define the API endpoint URL
+    const apiUrl = "http://127.0.0.1:8000/last-4-reports"; // Replace with your API endpoint
+
+    // Fetch data from the API
+    fetch(apiUrl)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setReports(data); // Update state with the fetched data
+        setLoading(false); // Set loading to false
+      })
+      .catch((error) => {
+        console.error("Fetch error:", error);
+        setLoading(false); // Set loading to false in case of an error
+      });
+  }, []); // The empty dependency array ensures the effect runs only once
+
+
   return (
     <div class="pdt">
       <div class="container mb-5">
@@ -148,49 +175,74 @@ function HomePage() {
           <div class="container pt">
             <div class="d-flex flex-row mb-3">
               <div class="me-5">Latest Reports</div>
-              <div>Favourite Reports</div>
             </div>
-            <div class="row">
-              <div class="col-12 col-md-6 col-lg-4 mb-4">
-                <div class="d-flex justify-content-center align-items-center py-5 bg-light rounded">
-                  <div class="text-center">
-                    <img
-                      class="mx-auto mb-5 img-fluid"
-                      src="bootstrap5-plain-assets/images/blue-400-avatar.png"
-                      alt=""
-                    ></img>
-                    <h4 class="fw-bold">Danny Bailey</h4>
-                    <p class="text-muted">CEO &amp; Founder</p>
+
+            {loading ? (
+              <p>Loading...</p>
+            ) : (
+              <div class="row">
+                {reports.length && reports.map((report, index) => (
+                  <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <div class="d-flex justify-content-center align-items-center py-5 bg-light rounded">
+                      <div class="text-center">
+                        <img
+                          class="mx-auto mb-5 img-fluid"
+                          src="bootstrap5-plain-assets/images/blue-400-avatar.png"
+                          alt=""
+                        ></img>
+                        <h4 class="fw-bold" key={index}>{report.company_name}</h4>
+                        <p class="text-muted" key={index}>{report.industry}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+              {/* <div class="row">
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                  <div class="d-flex justify-content-center align-items-center py-5 bg-light rounded">
+                    <div class="text-center">
+                      <img
+                        class="mx-auto mb-5 img-fluid"
+                        src="bootstrap5-plain-assets/images/blue-400-avatar.png"
+                        alt=""
+                      ></img>
+                      <h4 class="fw-bold">Danny Bailey</h4>
+                      <p class="text-muted">CEO &amp; Founder</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-12 col-md-6 col-lg-4 mb-4">
-                <div class="d-flex justify-content-center align-items-center py-5 bg-light rounded">
-                  <div class="text-center">
-                    <img
-                      class="mx-auto mb-5 img-fluid"
-                      src="bootstrap5-plain-assets/images/blue-400-avatar.png"
-                      alt=""
-                    ></img>
-                    <h4 class="fw-bold">Danny Bailey</h4>
-                    <p class="text-muted">CEO &amp; Founder</p>
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                  <div class="d-flex justify-content-center align-items-center py-5 bg-light rounded">
+                    <div class="text-center">
+                      <img
+                        class="mx-auto mb-5 img-fluid"
+                        src="bootstrap5-plain-assets/images/blue-400-avatar.png"
+                        alt=""
+                      ></img>
+                      <h4 class="fw-bold">Danny Bailey</h4>
+                      <p class="text-muted">CEO &amp; Founder</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-12 col-md-6 col-lg-4 mb-4">
-                <div class="d-flex justify-content-center align-items-center py-5 bg-light rounded">
-                  <div class="text-center">
-                    <img
-                      class="mx-auto mb-5 img-fluid"
-                      src="bootstrap5-plain-assets/images/blue-400-avatar.png"
-                      alt=""
-                    ></img>
-                    <h4 class="fw-bold">Danny Bailey</h4>
-                    <p class="text-muted">CEO &amp; Founder</p>
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                  <div class="d-flex justify-content-center align-items-center py-5 bg-light rounded">
+                    <div class="text-center">
+                      <img
+                        class="mx-auto mb-5 img-fluid"
+                        src="bootstrap5-plain-assets/images/blue-400-avatar.png"
+                        alt=""
+                      ></img>
+                      <h4 class="fw-bold">Danny Bailey</h4>
+                      <p class="text-muted">CEO &amp; Founder</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </div> */}
+
+            
+            
           </div>
         </div>
       </div>
