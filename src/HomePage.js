@@ -186,63 +186,32 @@ function HomePage() {
                     <div class="d-flex justify-content-center align-items-center py-5 bg-light rounded">
                       <div class="text-center">
                         <img
-                          class="mx-auto mb-5 img-fluid"
-                          src="bootstrap5-plain-assets/images/blue-400-avatar.png"
+                          class="mx-auto mb-2 img-fluid"
+                          src={"http://localhost:8000/" + report.logo_path}
                           alt=""
                         ></img>
                         <h4 class="fw-bold" key={index}>{report.company_name}</h4>
                         <p class="text-muted" key={index}>{report.industry}</p>
+                        <div className="flx1">
+                        <a
+                        className="btn btn-success"
+                        href={"http://localhost:8000/" + report.pptx_path}
+                      >
+                        <i class="bi bi-file-earmark-arrow-down-fill"></i>Powerpoint
+                      </a>
+                        <a
+                        className="btn btn-outline-success"
+                        href={"http://localhost:8000/" + report.pdf_path}
+                      >
+                        <i class="bi bi-file-earmark-arrow-down"></i>Original
+                      </a>
+                        </div>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
             )}
-
-              {/* <div class="row">
-                <div class="col-12 col-md-6 col-lg-4 mb-4">
-                  <div class="d-flex justify-content-center align-items-center py-5 bg-light rounded">
-                    <div class="text-center">
-                      <img
-                        class="mx-auto mb-5 img-fluid"
-                        src="bootstrap5-plain-assets/images/blue-400-avatar.png"
-                        alt=""
-                      ></img>
-                      <h4 class="fw-bold">Danny Bailey</h4>
-                      <p class="text-muted">CEO &amp; Founder</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 mb-4">
-                  <div class="d-flex justify-content-center align-items-center py-5 bg-light rounded">
-                    <div class="text-center">
-                      <img
-                        class="mx-auto mb-5 img-fluid"
-                        src="bootstrap5-plain-assets/images/blue-400-avatar.png"
-                        alt=""
-                      ></img>
-                      <h4 class="fw-bold">Danny Bailey</h4>
-                      <p class="text-muted">CEO &amp; Founder</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 mb-4">
-                  <div class="d-flex justify-content-center align-items-center py-5 bg-light rounded">
-                    <div class="text-center">
-                      <img
-                        class="mx-auto mb-5 img-fluid"
-                        src="bootstrap5-plain-assets/images/blue-400-avatar.png"
-                        alt=""
-                      ></img>
-                      <h4 class="fw-bold">Danny Bailey</h4>
-                      <p class="text-muted">CEO &amp; Founder</p>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
-
-            
-            
           </div>
         </div>
       </div>

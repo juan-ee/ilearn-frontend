@@ -35,3 +35,8 @@
 .pt{
     padding-top: 8rem !important;
 }
+.flx1{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1.5rem !important;
+}
