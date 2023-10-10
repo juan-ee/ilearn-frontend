@@ -83,7 +83,7 @@ function ListReports() {
             <i class="bi bi-funnel"></i> &nbsp; Industry
           </a>
         </p>
-        <Collapse in={open}>
+        <Collapse in={open} className="show1">
           <div class="flx">
             {industries.map((industry, index) => (
               <p key={index} >{industry}</p>
@@ -163,7 +163,7 @@ function ListReports() {
                         className="btn btn-success"
                         href={"http://localhost:8000/" + report.pptx_path}
                       >
-                        <i class="bi bi-file-earmark-arrow-down-fill"></i>
+                        <i class="bi bi-file-earmark-arrow-down-fill"></i> Download
                       </a>
                     </td>
                     <td key={index}>
@@ -171,7 +171,7 @@ function ListReports() {
                         className="btn btn-outline-success"
                         href={"http://localhost:8000/" + report.pdf_path}
                       >
-                        <i class="bi bi-file-earmark-arrow-down"></i>
+                        <i class="bi bi-file-earmark-arrow-down"></i> Download
                       </a>
                     </td>
                   </tr>
