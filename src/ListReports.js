@@ -16,6 +16,8 @@ function ListReports() {
   // ... and a sorted array from the set.
   const industries = Array.from(industrySet).sort();
 
+  const [industryFilter, setIndustryFilter] = useState("");
+
   useEffect(() => {
     // Define the API endpoint URL
     const apiUrl = "http://127.0.0.1:8000/reports"; // Replace with your API endpoint
@@ -86,7 +88,16 @@ function ListReports() {
         <Collapse in={open}>
           <div class="flx">
             {industries.map((industry, index) => (
-              <p key={index} >{industry}</p>
+              <p key={index} onClick={(event) => {
+                if (industryFilter == industry)
+                {
+                  setIndustryFilter("");
+                }
+                else
+                {
+                  setIndustryFilter(industry);
+                }
+              }}>{industry}</p>
             ))}
           </div>
         </Collapse>
@@ -128,16 +139,25 @@ function ListReports() {
             {reports.length &&
               reports
                 .filter((report, index) => {
+                  var firstFilterPass = false;
                   if (query === "") {
                     //if query is empty
-                    return report;
+                    firstFilterPass = true;
                   } else if (
                     report.company_name
                       .toLowerCase()
                       .includes(query.toLowerCase())
                   ) {
                     //returns filtered array
-                    return report;
+                    firstFilterPass = true;
+                  }
+
+                  if (firstFilterPass)
+                  {
+                    if (industryFilter == "" || report.industry == industryFilter)
+                    {
+                      return report;
+                    }
                   }
                 })
                 .map((report, index) => (
