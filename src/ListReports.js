@@ -116,8 +116,8 @@ function ListReports() {
               <th class="sortable">S&P Dow Jones</th>
             </OverlayTrigger>
 
-            <th>Report</th>
-            <th>Original</th>
+            <th>PowerPoint</th>
+            <th>Original Report</th>
           </tr>
         </thead>
 
@@ -163,7 +163,7 @@ function ListReports() {
                         className="btn btn-success"
                         href={"http://localhost:8000/" + report.pptx_path}
                       >
-                        report {report.company_name}
+                        <i class="bi bi-file-earmark-arrow-down-fill"></i>
                       </a>
                     </td>
                     <td key={index}>
@@ -171,7 +171,7 @@ function ListReports() {
                         className="btn btn-outline-success"
                         href={"http://localhost:8000/" + report.pdf_path}
                       >
-                        Original Reports
+                        <i class="bi bi-file-earmark-arrow-down"></i>
                       </a>
                     </td>
                   </tr>
