@@ -69,11 +69,7 @@
 .sortable{
   cursor: pointer;
 }
-.show1{ 
-  justify-content: space-between !important;
-  display: flex;
-  padding: 2rem;
-}
+
 .collapsing{ 
   justify-content: space-between !important;
   display: flex;

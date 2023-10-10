@@ -111,19 +111,19 @@ function ListReports() {
             </th>
             <th>Logo</th>
             <th class="sortable">Industry</th>
-            <OverlayTrigger overlay={<Tooltip>Explain the ratings</Tooltip>}>
+            <OverlayTrigger overlay={<Tooltip>Uses a methodology for the fäting that covers seven management indicators across 21 sustainability criteria's across four themes: environment, labor & human rights, ethics and sustainable procurement</Tooltip>}>
               <th class="sortable">Ecovadis</th>
             </OverlayTrigger>
-            <OverlayTrigger overlay={<Tooltip>Explain the ratings</Tooltip>}>
+            <OverlayTrigger overlay={<Tooltip>Shows where the organization is on the road towards operating in line with a 1.5-degree, deforestation-free and water-secure future</Tooltip>}>
               <th class="sortable">CDP</th>
             </OverlayTrigger>
-            <OverlayTrigger overlay={<Tooltip>Explain the ratings</Tooltip>}>
+            <OverlayTrigger overlay={<Tooltip>evaluating company sustainability performance including ESG risks, opportunities, and impact along the entire corporate value chain. The areas and indicators assessed are influenced by several factors such as international norms and conventions, social debate, regulatory changes and technological progness.</Tooltip>}>
               <th class="sortable">Sustainalytics</th>
             </OverlayTrigger>
-            <OverlayTrigger overlay={<Tooltip>Explain the ratings</Tooltip>}>
+            <OverlayTrigger overlay={<Tooltip>looks at 1000+ data points (KPIs, policies, targets, etc.), considering exposure metrics (how exposed is the company to industry material issues), management metrics (how is the company managing each issue), and 35 ESG key Issues</Tooltip>}>
               <th class="sortable">MSCI</th>
             </OverlayTrigger>
-            <OverlayTrigger overlay={<Tooltip>Explain the ratings</Tooltip>}>
+            <OverlayTrigger overlay={<Tooltip>assessment of a company's ESG strategy and ability to prepare for potential future risks and opportunities.</Tooltip>}>
               <th class="sortable">S&P Dow Jones</th>
             </OverlayTrigger>
 
