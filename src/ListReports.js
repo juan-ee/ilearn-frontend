@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
+import Collapse from "react-bootstrap/Collapse";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import "./css/ListReports.css";
@@ -8,7 +9,12 @@ import SortingComponent from "./SortingComponent";
 function ListReports() {
   const [reports, setReports] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
+  // Make a set of unique categories...
+  const industrySet = new Set(reports.map((r) => r.industry));
+  // ... and a sorted array from the set.
+  const industries = Array.from(industrySet).sort();
 
   useEffect(() => {
     // Define the API endpoint URL
@@ -66,33 +72,32 @@ function ListReports() {
           </div>
         </div>
       </form>
-      <div className="container-filter industry-filter">
-        <div class="all industry__item active-industry btn btn-success">
-          <span
-            class="industry__item  mixitup-control-active"
-            data-filter="all"
+      <div className="container-filter">
+        <p class="d-inline-flex gap-1">
+          <a
+            className="active-industry btn text-light btn-success "
+            onClick={() => setOpen(!open)}
+            aria-controls="example-collapse-text"
+            aria-expanded={open}
           >
-            Industry{" "}
-          </span>
-          <i class="bi bi-caret-down-fill"></i>
-        </div>
-        <div class="hide_industry" id="h_industry">
-          <span class="industry__item" data-filter=".auto">
-            Auto
-          </span>
-          <span class="industry__item" data-filter=".pharma">
-            Pharma
-          </span>
-          <span class="industry__item" data-filter=".retail">
-            Retail
-          </span>
-        </div>
+            <i class="bi bi-funnel"></i> &nbsp; Industry
+          </a>
+        </p>
+        <Collapse in={open}>
+          <div class="flx">
+            {industries.map((industry, index) => (
+              <p key={index} >{industry}</p>
+            ))}
+          </div>
+        </Collapse>
       </div>
 
       <table className="ReportsTable table align-middle mb-0 bg-white ">
         <thead>
           <tr>
-            <th class="sortable">Company</th>
+            <th class="sortable">
+              <i class="bi bi-sort-alpha-up"></i>Company
+            </th>
             <th>Logo</th>
             <th class="sortable">Industry</th>
             <OverlayTrigger overlay={<Tooltip>Explain the ratings</Tooltip>}>
