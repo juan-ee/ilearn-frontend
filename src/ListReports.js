@@ -40,6 +40,8 @@ function ListReports() {
       });
 
     SortingComponent();
+
+
   }, []); // The empty dependency array ensures the effect runs only once
 
   return (
@@ -124,25 +126,23 @@ function ListReports() {
       <table className="ReportsTable table align-middle mb-0 bg-white ">
         <thead>
           <tr>
-            <th class="sortable clickable">
-              <i class="bi bi-sort-alpha-up"></i>Company
-            </th>
+            <th class="sortable clickable"><i className="sortingIcons"></i>Company</th>
             <th>Logo</th>
-            <th class="sortable clickable">Industry</th>
+            <th class="sortable clickable"><i className="sortingIcons"></i>Industry</th>
             <OverlayTrigger overlay={<Tooltip>Uses a methodology for the fäting that covers seven management indicators across 21 sustainability criteria's across four themes: environment, labor & human rights, ethics and sustainable procurement</Tooltip>}>
-              <th class="sortable clickable">Ecovadis</th>
+              <th class="sortable clickable"><i className="sortingIcons"></i>Ecovadis</th>
             </OverlayTrigger>
             <OverlayTrigger overlay={<Tooltip>Shows where the organization is on the road towards operating in line with a 1.5-degree, deforestation-free and water-secure future</Tooltip>}>
-              <th class="sortable clickable">CDP</th>
+              <th class="sortable clickable"><i className="sortingIcons"></i>CDP</th>
             </OverlayTrigger>
             <OverlayTrigger overlay={<Tooltip>evaluating company sustainability performance including ESG risks, opportunities, and impact along the entire corporate value chain. The areas and indicators assessed are influenced by several factors such as international norms and conventions, social debate, regulatory changes and technological progness.</Tooltip>}>
-              <th class="sortable clickable">Sustainalytics</th>
+              <th class="sortable clickable"><i className="sortingIcons"></i>Sustainalytics</th>
             </OverlayTrigger>
             <OverlayTrigger overlay={<Tooltip>looks at 1000+ data points (KPIs, policies, targets, etc.), considering exposure metrics (how exposed is the company to industry material issues), management metrics (how is the company managing each issue), and 35 ESG key Issues</Tooltip>}>
-              <th class="sortable clickable">MSCI</th>
+              <th class="sortable clickable"><i className="sortingIcons"></i>MSCI</th>
             </OverlayTrigger>
             <OverlayTrigger overlay={<Tooltip>assessment of a company's ESG strategy and ability to prepare for potential future risks and opportunities.</Tooltip>}>
-              <th class="sortable clickable">S&P Dow Jones</th>
+              <th class="sortable clickable"><i className="sortingIcons"></i>S&P Dow Jones</th>
             </OverlayTrigger>
 
             <th>PowerPoint</th>

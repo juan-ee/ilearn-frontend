@@ -134,8 +134,27 @@ function SortingComponent() {
 
             //gets the inex of the clicked th
             var clickedColumn = Array.from(th.parentNode.children).indexOf(th);
+
             //gets the order that the table should be ordered to
             setDirectionToOrder(clickedColumn);
+
+            //Update ordered icons
+            var els = document.getElementsByClassName("sortingIcons");
+
+            Array.prototype.forEach.call(els, function(el) {
+                el.className = "sortingIcons";
+            });
+
+            if (asc)
+            {
+                th.firstChild.classList.add("bi");
+                th.firstChild.classList.add("bi-sort-up");
+            }
+            else
+            {
+                th.firstChild.classList.add("bi");
+                th.firstChild.classList.add("bi-sort-down");
+            }
 
             // For every row in the table body
             // Use Array.from to build an array from table.querySelectorAll result
