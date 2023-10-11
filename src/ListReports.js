@@ -40,6 +40,8 @@ function ListReports() {
       });
 
     SortingComponent();
+
+
   }, []); // The empty dependency array ensures the effect runs only once
 
   return (
@@ -78,7 +80,18 @@ function ListReports() {
         <p class="d-inline-flex gap-1">
           <a
             className="active-industry btn text-light btn-success "
-            onClick={() => setOpen(!open)}
+            onClick={() => {
+              setOpen(!open);
+              
+              setIndustryFilter("");
+
+              var active = document.getElementsByClassName("activeIndustry")[0];
+              if (active != null)
+              {
+                active.classList.remove("activeIndustry");
+              }
+
+            }}
             aria-controls="example-collapse-text"
             aria-expanded={open}
           >
@@ -88,13 +101,20 @@ function ListReports() {
         <Collapse in={open} className="show1">
           <div class="flx">
             {industries.map((industry, index) => (
-              <p key={index} onClick={(event) => {
+              <p className="clickable" key={index} onClick={(event) => {
+                var active = document.getElementsByClassName("activeIndustry")[0];
+                if (active != null)
+                {
+                  active.classList.remove("activeIndustry");
+                }
+
                 if (industryFilter == industry)
                 {
                   setIndustryFilter("");
                 }
                 else
                 {
+                  event.target.classList.add("activeIndustry");
                   setIndustryFilter(industry);
                 }
               }}>{industry}</p>
@@ -106,25 +126,23 @@ function ListReports() {
       <table className="ReportsTable table align-middle mb-0 bg-white ">
         <thead>
           <tr>
-            <th class="sortable">
-              <i class="bi bi-sort-alpha-up"></i>Company
-            </th>
+            <th class="sortable clickable"><i className="sortingIcons"></i>Company</th>
             <th>Logo</th>
-            <th class="sortable">Industry</th>
+            <th class="sortable clickable"><i className="sortingIcons"></i>Industry</th>
             <OverlayTrigger overlay={<Tooltip>Uses a methodology for the fäting that covers seven management indicators across 21 sustainability criteria's across four themes: environment, labor & human rights, ethics and sustainable procurement</Tooltip>}>
-              <th class="sortable">Ecovadis</th>
+              <th class="sortable clickable"><i className="sortingIcons"></i>Ecovadis</th>
             </OverlayTrigger>
             <OverlayTrigger overlay={<Tooltip>Shows where the organization is on the road towards operating in line with a 1.5-degree, deforestation-free and water-secure future</Tooltip>}>
-              <th class="sortable">CDP</th>
+              <th class="sortable clickable"><i className="sortingIcons"></i>CDP</th>
             </OverlayTrigger>
             <OverlayTrigger overlay={<Tooltip>evaluating company sustainability performance including ESG risks, opportunities, and impact along the entire corporate value chain. The areas and indicators assessed are influenced by several factors such as international norms and conventions, social debate, regulatory changes and technological progness.</Tooltip>}>
-              <th class="sortable">Sustainalytics</th>
+              <th class="sortable clickable"><i className="sortingIcons"></i>Sustainalytics</th>
             </OverlayTrigger>
             <OverlayTrigger overlay={<Tooltip>looks at 1000+ data points (KPIs, policies, targets, etc.), considering exposure metrics (how exposed is the company to industry material issues), management metrics (how is the company managing each issue), and 35 ESG key Issues</Tooltip>}>
-              <th class="sortable">MSCI</th>
+              <th class="sortable clickable"><i className="sortingIcons"></i>MSCI</th>
             </OverlayTrigger>
             <OverlayTrigger overlay={<Tooltip>assessment of a company's ESG strategy and ability to prepare for potential future risks and opportunities.</Tooltip>}>
-              <th class="sortable">S&P Dow Jones</th>
+              <th class="sortable clickable"><i className="sortingIcons"></i>S&P Dow Jones</th>
             </OverlayTrigger>
 
             <th>PowerPoint</th>

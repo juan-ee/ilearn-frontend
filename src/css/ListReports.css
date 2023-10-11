@@ -66,13 +66,25 @@
   height: 30px;
   width: auto;
 }
-.sortable{
-  cursor: pointer;
-}
 
 .collapsing{ 
   justify-content: space-between !important;
   display: flex;
   padding: 2rem;
   transition: smooth;
+}
+
+.show1{
+  width: fit-content;
+  display: flex;
+  gap: 2rem;
+}
+
+.clickable{
+  cursor: pointer;
+}
+
+.activeIndustry{
+  font-weight: bold;
+  color: #198754;
 }
