@@ -1,7 +1,7 @@
 import { Button, Form } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import "./css/HomePage.css";
 import gif from "./AGNB.gif";
 
@@ -29,8 +29,8 @@ function NewReport(props) {
         // Request was successful, you can handle the response here
         document.getElementById("loadingModal").style.display = "block";
 
-        setTimeout(function() {
-          navigate('/list-reports');
+        setTimeout(function () {
+          navigate("/list-reports");
         }, 2000);
 
         //alert("report saved !");
@@ -135,20 +135,15 @@ function HomePage() {
       });
   }, []); // The empty dependency array ensures the effect runs only once
 
-
   return (
     <div class="pdt">
       <div class="container mb-5">
         <div class="row position-relative">
-          <div class="col-12 col-lg-8 mx-auto text-center mb-5">
-            <h2 class="display-4 fw-bold mb-5">
-              Finish what you started today before you forget to do it.
+          <div class="col-12 col-lg-8 mx-auto text-center ">
+            <h2 class="display-4 fw-bold mb6">
+              <strong className="green-text">EcoSlide</strong> your AI for a
+              green and simple Report
             </h2>
-            <p class="lead text-muted mb-5">
-              Correct annotation helps your customers find their way around new
-              features. Getting familiar with the project is the first step
-              towards development.
-            </p>
             <div>
               {/* 
          Button for showing the Modal 
@@ -166,12 +161,53 @@ function HomePage() {
                 Search Reports
               </Button>
             </div>
+                        <div className="mt6">
+              <h3 className="mb-4">How It Works</h3>
+              <div class="steps-main bg px-2">
+                <div class="tabs">
+                  <div
+                    aria-label="Basic example"
+                    role="group"
+                    class="btn-group"
+                  >
+                    <div  class=" btn mx-4 ">
+                      <i class="bi bi-1-circle-fill"></i>
+                      <div>
+                        Register<p>as an independent contractor</p>
+                      </div>
+                    </div>
+                    <div  class="btn mx-4" >
+                      <i class="bi bi-2-circle-fill"></i>
+                      <div>
+                        Select Program<p>Current opportunities</p>
+                      </div>
+                    </div>
+                    <div  class="btn mx-4 " >
+                      <i class="bi bi-3-circle-fill"></i>
+                      <div>
+                        Take Assessments<p>And start working soon after</p>
+                      </div>
+                    </div>
+                    <div  class="btn mx-4 " >
+                      <i class="bi bi-4-circle-fill"></i>
+                      <div>
+                        Take Assessments<p>And start working soon after</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div id="loadingModal" class="LoadingModal">
-            <img class="LoadingModal-content" src={gif} alt="missing image"></img>
+            <img
+              class="LoadingModal-content"
+              src={gif}
+              alt="missing image"
+            ></img>
           </div>
-          
+
           <div class="container pt">
             <div class="d-flex flex-row mb-3">
               <div class="me-5">Latest Reports</div>
@@ -181,35 +217,42 @@ function HomePage() {
               <p>Loading...</p>
             ) : (
               <div class="row">
-                {reports.length && reports.map((report, index) => (
-                  <div class="col-12 col-md-6 col-lg-4 mb-4">
-                    <div class="d-flex justify-content-center align-items-center py-5 bg-light rounded">
-                      <div class="text-center">
-                        <img
-                          class="mx-auto mb-2 img-fluid"
-                          src={"http://localhost:8000/" + report.logo_path}
-                          alt=""
-                        ></img>
-                        <h4 class="fw-bold" key={index}>{report.company_name}</h4>
-                        <p class="text-muted" key={index}>{report.industry}</p>
-                        <div className="flx1">
-                        <a
-                        className="btn btn-success"
-                        href={"http://localhost:8000/" + report.pptx_path}
-                      >
-                        <i class="bi bi-file-earmark-arrow-down-fill"></i>Powerpoint
-                      </a>
-                        <a
-                        className="btn btn-outline-success"
-                        href={"http://localhost:8000/" + report.pdf_path}
-                      >
-                        <i class="bi bi-file-earmark-arrow-down"></i>Original
-                      </a>
+                {reports.length &&
+                  reports.map((report, index) => (
+                    <div class="col-12 col-md-6 col-lg-4 mb-4">
+                      <div class="d-flex justify-content-center align-items-center py-5 bg-light rounded">
+                        <div class="text-center">
+                          <img
+                            class="mx-auto mb-2 img-fluid"
+                            src={"http://localhost:8000/" + report.logo_path}
+                            alt=""
+                          ></img>
+                          <h4 class="fw-bold" key={index}>
+                            {report.company_name}
+                          </h4>
+                          <p class="text-muted" key={index}>
+                            {report.industry}
+                          </p>
+                          <div className="flx1">
+                            <a
+                              className="btn btn-success"
+                              href={"http://localhost:8000/" + report.pptx_path}
+                            >
+                              <i class="bi bi-file-earmark-arrow-down-fill"></i>{" "}
+                              Powerpoint
+                            </a>
+                            <a
+                              className="btn btn-outline-success"
+                              href={"http://localhost:8000/" + report.pdf_path}
+                            >
+                              <i class="bi bi-file-earmark-arrow-down"></i>{" "}
+                              Original
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
               </div>
             )}
           </div>

@@ -1,8 +1,5 @@
 .pdt{
     padding-top: 8rem !important;
-    background-image: url(../img/background.jpg);
-    background-size: contain;
-    height: 100vh;
 }
 .howto{
     width: 48px;height: 48px;
@@ -39,4 +36,34 @@
     display: flex;
     justify-content: space-around;
     margin-top: 1.5rem !important;
+}
+.green-text{
+    color: #198754;
+}
+.mt6{
+    margin-top: 6rem !important;
+}
+.mb6{
+    margin-bottom: 6rem !important;
+}
+.bg{
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-light-rgb),var(--bs-bg-opacity))!important;
+    border-radius: 0.5rem;
+}
+.bi-1-circle-fill{
+  color: #198754 !important;
+  font-size: 2rem;
+}
+.bi-2-circle-fill{
+  color: #198754 !important;
+  font-size: 2rem;
+}
+.bi-3-circle-fill{
+  color: #198754 !important;
+  font-size: 2rem;
+}
+.bi-4-circle-fill{
+  color: #198754 !important;
+  font-size: 2rem;
 }
