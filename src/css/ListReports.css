@@ -67,12 +67,7 @@
   width: auto;
 }
 
-.collapsing{ 
-  justify-content: space-between !important;
-  display: flex;
-  padding: 2rem;
-  transition: smooth;
-}
+
 
 .show1{
   width: fit-content;

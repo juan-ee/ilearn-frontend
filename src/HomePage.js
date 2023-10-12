@@ -219,7 +219,7 @@ function HomePage() {
               <div class="row">
                 {reports.length &&
                   reports.map((report, index) => (
-                    <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <div class="col-12 col-md-6 col-lg-4 mb-4 ht">
                       <div class="d-flex justify-content-center align-items-center py-5 bg-light rounded">
                         <div class="text-center">
                           <img
