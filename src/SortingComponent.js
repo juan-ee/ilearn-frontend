@@ -52,7 +52,18 @@ function SortingComponent() {
     };
 
     var SustainalyticsDict = {
-        "TODO": 0,
+        "A+": 11,
+        "A": 10,
+        "A-": 9,
+        "B+": 8,
+        "B": 7,
+        "B-": 6,
+        "C+": 5,
+        "C": 4,
+        "C-": 3,
+        "D+": 2,
+        "D": 1,
+        "D-": 0,
     };
 
     var MSCIDict = {
@@ -66,7 +77,28 @@ function SortingComponent() {
     };
 
     var DowJonesDict = {
-        "TODO": 0,
+        "AAA": 21,
+        "AA+": 20,
+        "AA": 19,
+        "AA-": 18,
+        "A+": 17,
+        "A": 16,
+        "A-": 15,
+        "BBB+": 14,
+        "BBB": 13,
+        "BBB-": 12,
+        "BB+": 11,
+        "BB": 10,
+        "BB-": 9,
+        "B+": 8,
+        "B": 7,
+        "B-": 6,
+        "CCC+": 5,
+        "CCC": 4,
+        "CCC-": 3,
+        "CC": 2,
+        "C": 1,
+        "D": 0,
     };
 
 
