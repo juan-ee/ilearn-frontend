@@ -192,7 +192,7 @@ function ListReports() {
                     <td key={index}>{report.industry}</td>
                     <td key={index}>{report.rating_ecovadis}</td>
                     <td key={index}>{report.rating_cdp}</td>
-                    <td key={index}>{report.rating_sustainalitycs}</td>
+                    <td key={index}>{report.rating_sustainalytics}</td>
                     <td key={index}>{report.rating_msci}</td>
                     <td key={index}>{report.rating_sp_dow_jones}</td>
                     <td key={index}>

@@ -173,25 +173,25 @@ function HomePage() {
                     <div  class=" btn mx-4 ">
                       <i class="bi bi-1-circle-fill"></i>
                       <div>
-                        Register<p>as an independent contractor</p>
+                        <strong>Register</strong> <p>an account</p>
                       </div>
                     </div>
                     <div  class="btn mx-4" >
                       <i class="bi bi-2-circle-fill"></i>
                       <div>
-                        Select Program<p>Current opportunities</p>
+                      <strong>Select & upload</strong> <p>the sustainability reports</p>
                       </div>
                     </div>
                     <div  class="btn mx-4 " >
                       <i class="bi bi-3-circle-fill"></i>
                       <div>
-                        Take Assessments<p>And start working soon after</p>
+                      <strong>Our AI</strong> <p>will process the information</p>
                       </div>
                     </div>
                     <div  class="btn mx-4 " >
                       <i class="bi bi-4-circle-fill"></i>
                       <div>
-                        Take Assessments<p>And start working soon after</p>
+                      <strong>Access</strong> <p>your reports anytime (:</p>
                       </div>
                     </div>
                   </div>
@@ -210,7 +210,7 @@ function HomePage() {
 
           <div class="container pt">
             <div class="d-flex flex-row mb-3">
-              <div class="me-5">Latest Reports</div>
+              <div class="me-5 fonts"><strong>Latest Reports</strong></div>
             </div>
 
             {loading ? (

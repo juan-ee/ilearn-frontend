@@ -39,7 +39,8 @@
     gap: 2rem;
 }
 .green-text{
-    color: #198754;
+    color: #198754 !important;
+    font-weight: bold !important;
 }
 .mt6{
     margin-top: 6rem !important;
@@ -70,4 +71,7 @@
 }
 .img-fluid{
     height: 5rem !important;
+}
+.fonts{
+    font-size: 1.5rem;
 }
