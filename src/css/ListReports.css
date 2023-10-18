@@ -61,8 +61,6 @@
 .container-filter {
     display: flex;
     flex-direction: column;
-    max-width: 10rem;
-    margin-bottom: 3rem;
 }
 .logo{
   height: 30px;
@@ -70,6 +68,18 @@
 }
 
 
-.sortable{
+
+.show1{
+  width: fit-content;
+  display: flex;
+  gap: 2rem;
+}
+
+.clickable{
   cursor: pointer;
+}
+
+.activeIndustry{
+  font-weight: bold;
+  color: #198754;
 }

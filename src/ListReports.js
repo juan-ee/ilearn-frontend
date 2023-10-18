@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
+import Collapse from "react-bootstrap/Collapse";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 import "./css/ListReports.css";
-import SortingComponent from "./SortingComponent"
+import SortingComponent from "./SortingComponent";
 
 function ListReports() {
   const [reports, setReports] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
+  // Make a set of unique categories...
+  const industrySet = new Set(reports.map((r) => r.industry));
+  // ... and a sorted array from the set.
+  const industries = Array.from(industrySet).sort();
+
+  const [industryFilter, setIndustryFilter] = useState("");
 
   useEffect(() => {
     // Define the API endpoint URL
@@ -28,9 +38,10 @@ function ListReports() {
         console.error("Fetch error:", error);
         setLoading(false); // Set loading to false in case of an error
       });
-      
-      SortingComponent();
-      
+
+    SortingComponent();
+
+
   }, []); // The empty dependency array ensures the effect runs only once
 
   return (
@@ -65,42 +76,77 @@ function ListReports() {
           </div>
         </div>
       </form>
-      <div className="container-filter industry-filter">
-        <div class="all industry__item active-industry btn btn-primary">
-          <span
-            class="industry__item  mixitup-control-active"
-            data-filter="all"
+      <div className="container-filter">
+        <p class="d-inline-flex gap-1">
+          <a
+            className="active-industry btn text-light btn-success "
+            onClick={() => {
+              setOpen(!open);
+              
+              setIndustryFilter("");
+
+              var active = document.getElementsByClassName("activeIndustry")[0];
+              if (active != null)
+              {
+                active.classList.remove("activeIndustry");
+              }
+
+            }}
+            aria-controls="example-collapse-text"
+            aria-expanded={open}
           >
-            Industry{" "}
-          </span>
-          <i class="bi bi-caret-down-fill"></i>
-        </div>
-        <div class="hide_industry" id="h_industry">
-          <span class="industry__item" data-filter=".auto">
-            Auto
-          </span>
-          <span class="industry__item" data-filter=".pharma">
-            Pharma
-          </span>
-          <span class="industry__item" data-filter=".retail">
-            Retail
-          </span>
-        </div>
+            <i class="bi bi-funnel"></i> &nbsp; Industry
+          </a>
+        </p>
+        <Collapse in={open} className="show1">
+          <div class="flx">
+            {industries.map((industry, index) => (
+              <p className="clickable" key={index} onClick={(event) => {
+                var active = document.getElementsByClassName("activeIndustry")[0];
+                if (active != null)
+                {
+                  active.classList.remove("activeIndustry");
+                }
+
+                if (industryFilter == industry)
+                {
+                  setIndustryFilter("");
+                }
+                else
+                {
+                  event.target.classList.add("activeIndustry");
+                  setIndustryFilter(industry);
+                }
+              }}>{industry}</p>
+            ))}
+          </div>
+        </Collapse>
       </div>
 
       <table className="ReportsTable table align-middle mb-0 bg-white ">
         <thead>
           <tr>
-            <th class="sortable">Company</th>
+            <th class="sortable clickable"><i className="sortingIcons"></i>Company</th>
             <th>Logo</th>
-            <th class="sortable">Industry</th>
-            <th class="sortable">Ecovadis</th>
-            <th class="sortable">CDP</th>
-            <th class="sortable">Sustainalytics</th>
-            <th class="sortable">MSCI</th>
-            <th class="sortable">S&P Dow Jones</th>
-            <th>Report</th>
-            <th>Original</th>
+            <th class="sortable clickable"><i className="sortingIcons"></i>Industry</th>
+            <OverlayTrigger overlay={<Tooltip>Uses a methodology for the fäting that covers seven management indicators across 21 sustainability criteria's across four themes: environment, labor & human rights, ethics and sustainable procurement</Tooltip>}>
+              <th class="sortable clickable"><i className="sortingIcons"></i>Ecovadis</th>
+            </OverlayTrigger>
+            <OverlayTrigger overlay={<Tooltip>Shows where the organization is on the road towards operating in line with a 1.5-degree, deforestation-free and water-secure future</Tooltip>}>
+              <th class="sortable clickable"><i className="sortingIcons"></i>CDP</th>
+            </OverlayTrigger>
+            <OverlayTrigger overlay={<Tooltip>evaluating company sustainability performance including ESG risks, opportunities, and impact along the entire corporate value chain. The areas and indicators assessed are influenced by several factors such as international norms and conventions, social debate, regulatory changes and technological progness.</Tooltip>}>
+              <th class="sortable clickable"><i className="sortingIcons"></i>Sustainalytics</th>
+            </OverlayTrigger>
+            <OverlayTrigger overlay={<Tooltip>looks at 1000+ data points (KPIs, policies, targets, etc.), considering exposure metrics (how exposed is the company to industry material issues), management metrics (how is the company managing each issue), and 35 ESG key Issues</Tooltip>}>
+              <th class="sortable clickable"><i className="sortingIcons"></i>MSCI</th>
+            </OverlayTrigger>
+            <OverlayTrigger overlay={<Tooltip>assessment of a company's ESG strategy and ability to prepare for potential future risks and opportunities.</Tooltip>}>
+              <th class="sortable clickable"><i className="sortingIcons"></i>S&P Dow Jones</th>
+            </OverlayTrigger>
+
+            <th>PowerPoint</th>
+            <th>Original Report</th>
           </tr>
         </thead>
 
@@ -111,16 +157,25 @@ function ListReports() {
             {reports.length &&
               reports
                 .filter((report, index) => {
+                  var firstFilterPass = false;
                   if (query === "") {
                     //if query is empty
-                    return report;
+                    firstFilterPass = true;
                   } else if (
                     report.company_name
                       .toLowerCase()
                       .includes(query.toLowerCase())
                   ) {
                     //returns filtered array
-                    return report;
+                    firstFilterPass = true;
+                  }
+
+                  if (firstFilterPass)
+                  {
+                    if (industryFilter == "" || report.industry == industryFilter)
+                    {
+                      return report;
+                    }
                   }
                 })
                 .map((report, index) => (
@@ -129,21 +184,33 @@ function ListReports() {
                       {report.company_name}
                     </td>
                     <td key={index}>
-                      <img className="logo" src={"http://localhost:8000/" + report.logo_path}></img>
+                      <img
+                        className="logo"
+                        src={"http://localhost:8000/" + report.logo_path}
+                      ></img>
                     </td>
                     <td key={index}>{report.industry}</td>
                     <td key={index}>{report.rating_ecovadis}</td>
                     <td key={index}>{report.rating_cdp}</td>
-                    <td key={index}>{report.rating_sustainalitycs}</td>
+                    <td key={index}>{report.rating_sustainalytics}</td>
                     <td key={index}>{report.rating_msci}</td>
                     <td key={index}>{report.rating_sp_dow_jones}</td>
                     <td key={index}>
                       {" "}
-                      <a className="btn btn-primary"href={"http://localhost:8000/" + report.pptx_path}>report {report.company_name}</a>
+                      <a
+                        className="btn btn-success"
+                        href={"http://localhost:8000/" + report.pptx_path}
+                      >
+                        <i class="bi bi-file-earmark-arrow-down-fill"></i> Download
+                      </a>
                     </td>
                     <td key={index}>
-
-                      <a className="btn btn-outline-primary" href={"http://localhost:8000/" + report.pdf_path}>Original Reports</a>
+                      <a
+                        className="btn btn-outline-success"
+                        href={"http://localhost:8000/" + report.pdf_path}
+                      >
+                        <i class="bi bi-file-earmark-arrow-down"></i> Download
+                      </a>
                     </td>
                   </tr>
                 ))}

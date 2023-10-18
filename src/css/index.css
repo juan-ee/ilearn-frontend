@@ -6,9 +6,24 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url(../img/background.jpg);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+@media (min-width:992px) {
+  .col-lg-4 {
+      flex: 0 0 auto;
+      width: 25% !important;
+  }
+}
+.img-fluid {
+  max-width: 50% !important;
+  height: auto;
 }

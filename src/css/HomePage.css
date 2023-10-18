@@ -1,6 +1,77 @@
-.margin{
-    margin-top: 8rem !important;
+.pdt{
+    padding-top: 8rem !important;
 }
 .howto{
     width: 48px;height: 48px;
+}
+
+
+/*Modal background*/
+.LoadingModal{
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 9999999; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal ContentBox */
+.LoadingModal-content {
+    display: block;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5rem;
+}
+
+.pt{
+    padding-top: 8rem !important;
+}
+.flx1{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1.5rem !important;
+    gap: 2rem;
+}
+.green-text{
+    color: #198754 !important;
+    font-weight: bold !important;
+}
+.mt6{
+    margin-top: 6rem !important;
+}
+.mb6{
+    margin-bottom: 6rem !important;
+}
+.bg{
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-light-rgb),var(--bs-bg-opacity))!important;
+    border-radius: 0.5rem;
+}
+.bi-1-circle-fill{
+  color: #198754 !important;
+  font-size: 2rem;
+}
+.bi-2-circle-fill{
+  color: #198754 !important;
+  font-size: 2rem;
+}
+.bi-3-circle-fill{
+  color: #198754 !important;
+  font-size: 2rem;
+}
+.bi-4-circle-fill{
+  color: #198754 !important;
+  font-size: 2rem;
+}
+.img-fluid{
+    height: 5rem !important;
+}
+.fonts{
+    font-size: 1.5rem;
 }

@@ -3,18 +3,18 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 
+
 function NavBar() {
     return (
-        <Navbar bg="primary" data-bs-theme="dark">
+        <Navbar bg="success" data-bs-theme="dark">
             <Container>
-                <Navbar.Brand href="/homepage">Navbar</Navbar.Brand>
+                <Navbar.Brand href="/homepage"><strong>EcoSlide</strong></Navbar.Brand>
                 <Nav className="me-auto">
                     <Nav.Link href="/homepage">Home</Nav.Link>
                     <Nav.Link href="/list-reports">List Reports</Nav.Link>
                 </Nav>
             </Container>
         </Navbar>
-        
     );
 }
 
