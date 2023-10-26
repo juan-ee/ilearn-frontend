@@ -38,6 +38,7 @@ function SortingComponent() {
         "Gold": 1,
         "Silver": 2,
         "Bronze": 3,
+        "None": 4
     };
 
     var CDPDict = {
@@ -49,6 +50,7 @@ function SortingComponent() {
         "C-": 5,
         "D": 6,
         "D-": 7,
+        "None": 8
     };
 
     var SustainalyticsDict = {
@@ -64,6 +66,7 @@ function SortingComponent() {
         "D+": 9,
         "D": 10,
         "D-": 11,
+        "None": 12
     };
 
     var MSCIDict = {
@@ -74,6 +77,7 @@ function SortingComponent() {
         "BB": 4,
         "B": 5,
         "CCC": 6,
+        "None": 7
     };
 
     var DowJonesDict = {
@@ -99,6 +103,7 @@ function SortingComponent() {
         "CC": 19,
         "C": 20,
         "D": 21,
+        "None": 22
     };
 
 
